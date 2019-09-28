@@ -466,6 +466,7 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 window.addEventListener('keyup', function(e) {
+  if (vm.state != STATE_IN_SESSION) return;
   let idx;
   switch (e.code)
   {
@@ -486,6 +487,7 @@ window.addEventListener('keyup', function(e) {
   }
 });
 window.addEventListener('keydown', function(e) {
+  if (vm.state != STATE_IN_SESSION) return;
   switch (e.code)
   {
     case "ArrowDown":
