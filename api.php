@@ -4,7 +4,7 @@ require_once "vendor/sleekdb/SleekDB.php";
 define("TYPE_PUBLIC", 0);
 define("TYPE_PRIVATE", 1);
 
-$dbDir = "db";
+$dbDir = __DIR__ . "/db";
 $sessions = \SleekDB\SleekDB::store('sessions', $dbDir);
 
 // Clean old records
