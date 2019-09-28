@@ -250,7 +250,7 @@
             <input class="grow-1" placeholder="Video URL" id="videoId" v-model="ui.videoInput" @keyup="popupNext">
           </div>
           <div class="hbox text-input" v-show="popupLabel('showPass')">
-            <input class="grow-1" placeholder="Password" id="password" type="password" v-model="ui.passwordInput" @keyup="popupConfirm">
+            <input class="grow-1" placeholder="Password" id="password" type="password" v-model="ui.passwordInput" @keyup="popupNext">
           </div>
           <div v-show="popupLabel('showPass')" style="color: red; font-size: 75%;">Passwords are transferred over network AS IS, don't use actual passwords, just do sane stuff like "12345", you've been warned.</div>
           <div v-show="ui.popups.playVideo == 1" class="hbox">
