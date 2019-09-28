@@ -145,7 +145,7 @@ var vm = new Vue({
     },
     videoBuffered: function ()
     {
-      return (this.player.buffered * 100) + "%";
+      return (this.local.buffered * 100) + "%";
     },
     videoPosition: function ()
     {

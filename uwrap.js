@@ -167,7 +167,7 @@ class YtPlayer
     if (this.refreshStateEnabled && !this.loadingVideo)
     {
       var old = vm.player.position;
-      vm.player.buffered = this.player.getVideoLoadedFraction();
+      vm.local.buffered = this.player.getVideoLoadedFraction();
       vm.player.position = this.player.getCurrentTime();
       vm.player.duration = this.player.getDuration();
       var diff = vm.player.position - old;
