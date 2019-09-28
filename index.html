@@ -187,7 +187,7 @@
               <!-- <span v-if='room.password_protected' style="font-size: 80%; padding-right: 5px;">&#x1f512;</span> -->
               <!-- {{room.users}}
               <i class='icon-user-circle'></i> -->
-              <div class="slim-button background" v-on:click="joinRoom(room)">Join</div>
+              <div class="slim-button background" tabindex="0" v-on:click="joinRoom(room)">Join</div>
             </div>
           </div>
           <div class="vbox box-padded">
@@ -234,7 +234,7 @@
         </div>
       </div>
       
-      <div class="popup" v-show="ui.popups.playVideo">
+      <div class="popup" id="sessionPopup" v-show="ui.popups.playVideo">
         <div class="vbox">
           <div class="header big hbox">
             {{popupLabel('header')}}
@@ -244,13 +244,13 @@
             </div>
           </div>
           <div class="hbox text-input" v-show="popupLabel('showSession')">
-            <input class="grow-1" v-bind:placeholder="popupLabel('session')" id="sessionId" v-model="ui.sessionInput">
+            <input class="grow-1" v-bind:placeholder="popupLabel('session')" id="sessionId" v-model="ui.sessionInput" @keyup="popupNext">
           </div>
           <div class="hbox text-input" v-show="popupLabel('showUrl')">
-            <input class="grow-1" placeholder="Video URL" id="videoId" v-model="ui.videoInput">
+            <input class="grow-1" placeholder="Video URL" id="videoId" v-model="ui.videoInput" @keyup="popupNext">
           </div>
           <div class="hbox text-input" v-show="popupLabel('showPass')">
-            <input class="grow-1" placeholder="Password" id="password" type="password" v-model="ui.passwordInput">
+            <input class="grow-1" placeholder="Password" id="password" type="password" v-model="ui.passwordInput" @keyup="popupConfirm">
           </div>
           <div v-show="popupLabel('showPass')" style="color: red; font-size: 75%;">Passwords are transferred over network AS IS, don't use actual passwords, just do sane stuff like "12345", you've been warned.</div>
           <div v-show="ui.popups.playVideo == 1" class="hbox">
@@ -258,7 +258,7 @@
             <div class="spacer"></div>
             <div title="Room won't be listed, but still can be accessed via direct link"><input type="checkbox" id="privateCheck" v-model="ui.privateLobby"> <label for="privateCheck">Unlisted room</label></div>
           </div>
-          <div class="slim-button" v-on:click="popupConfirm">
+          <div class="slim-button" v-on:click="popupConfirm" tabindex="0">
             <i class="icon-video"></i>
             {{popupLabel('okButton')}}
           </div>

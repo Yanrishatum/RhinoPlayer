@@ -328,6 +328,24 @@ var vm = new Vue({
           break;
       }
       vm.ui.popups.playVideo = state;
+      requestAnimationFrame(function() {
+        switch(state)
+        {
+          case 1: $("#sessionId").focus(); break;
+          case 2: $("#password").focus(); break;
+          case 3: $("#videoId").focus(); break;
+        }
+      });
+    },
+    popupNext: function(event)
+    {
+      if (event.code == "Enter")
+      {
+        const list = Array.from($$("#sessionPopup div:not(*[style*='display: none;'])>input:not(#privateCheck)"));
+        const idx = list.indexOf(event.currentTarget);
+        if (idx + 1 >= list.length) this.popupConfirm();
+        else list[idx+1].focus();
+      }
     },
     // Popup clicks
     joinRoom: function (room)
