@@ -407,7 +407,7 @@ var vm = new Vue({
     {
       var u = new URL(location.href);
       u.searchParams.set("room", vm.net.roomId);
-      u.searchParams.set("pass", vm.net.password);
+      if (vm.net.password) u.searchParams.set("pass", vm.net.password);
       history.replaceState({}, document.title, u.toString());
     },
     setVideoWithLog: function(url, updateRoom = false)
