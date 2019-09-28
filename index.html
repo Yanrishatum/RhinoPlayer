@@ -253,7 +253,11 @@
             <input class="grow-1" placeholder="Password" id="password" type="password" v-model="ui.passwordInput">
           </div>
           <div v-show="popupLabel('showPass')" style="color: red; font-size: 75%;">Passwords are transferred over network AS IS, don't use actual passwords, just do sane stuff like "12345", you've been warned.</div>
-          <div v-show="ui.popups.playVideo == 1">Rooms live for 24 hours since last activity.</div>
+          <div v-show="ui.popups.playVideo == 1" class="hbox">
+            <span>Rooms live for 24 hours since last activity.</span>
+            <div class="spacer"></div>
+            <div title="Room won't be listed, but still can be accessed via direct link"><input type="checkbox" id="privateCheck" v-model="ui.privateLobby"> <label for="privateCheck">Unlisted room</label></div>
+          </div>
           <div class="slim-button" v-on:click="popupConfirm">
             <i class="icon-video"></i>
             {{popupLabel('okButton')}}

@@ -122,6 +122,7 @@ var vmData = {
     sessionInput: location.hash != "" ? location.hash.substr(1) : "",
     videoInput: "",
     passwordInput: "",
+    privateLobby: false,
   },
   rooms: null,
   error: null,
@@ -381,7 +382,7 @@ var vm = new Vue({
             if (!confirm("Leave current session?")) return;
           }
           await initPeer();
-          var roomId = await createRoom(vm.ui.sessionInput || vm.net.name + "'s room", vm.ui.passwordInput, vm.ui.videoInput);
+          var roomId = await createRoom(vm.ui.sessionInput || vm.net.name + "'s room", vm.ui.passwordInput, vm.ui.videoInput, vm.ui.privateLobby ? 'private' : 'public');
           if (roomId.error)
           {
             vm.error = roomId.error;

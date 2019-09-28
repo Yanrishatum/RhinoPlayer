@@ -92,12 +92,12 @@ async function tryJoinRoom(room, pass)
   return await r.json();
 }
 
-async function createRoom(name, password, video)
+async function createRoom(name, password, video, type = "public")
 {
   let url = new URL('./api.php', location.href);
   url.searchParams.append('method', 'create');
   url.searchParams.append('name', name);
-  url.searchParams.append('type', 'public'); // todo
+  url.searchParams.append('type', type);
   if (password) url.searchParams.append('password', password);
   url.searchParams.append('id', vm.net.uid);
   url.searchParams.append('peer', peer.id);
